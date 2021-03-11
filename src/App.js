@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import AuthorsView from "./views/AuthorsView";
 import BooksView from "./views/BooksView";
@@ -10,13 +10,32 @@ const App = () => {
     <>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink
+            exact
+            to="/"
+            className="NavLink"
+            activeClassName="NavLink--active"
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <Link to="/authors">Authors</Link>
+          <NavLink
+            to="/authors"
+            className="NavLink"
+            activeClassName="NavLink--active"
+          >
+            Authors
+          </NavLink>
         </li>
         <li>
-          <Link to="/books">Books</Link>
+          <NavLink
+            to="/books"
+            className="NavLink"
+            activeClassName="NavLink--active"
+          >
+            Books
+          </NavLink>
         </li>
       </ul>
 
