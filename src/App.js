@@ -4,6 +4,7 @@ import HomeView from "./views/HomeView";
 import AuthorsView from "./views/AuthorsView";
 import BooksView from "./views/BooksView";
 import NotFoundView from "./views/NotFoundView";
+import BookDetailsView from "./views/BookDetailsView";
 
 const App = () => {
   return (
@@ -42,7 +43,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomeView} />
         <Route path="/authors" component={AuthorsView} />
-        <Route path="/books" component={BooksView} />
+        <Route exact path="/books" component={BooksView} />
+        <Route path="/books/:bookId" component={BookDetailsView} />
         <Route component={NotFoundView} />
       </Switch>
     </>

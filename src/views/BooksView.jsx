@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Axios from "axios";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 class BooksView extends Component {
   state = {
@@ -7,7 +8,7 @@ class BooksView extends Component {
   };
 
   async componentDidMount() {
-    const response = await Axios.get("http://localhost:2223/books");
+    const response = await axios.get("http://localhost:2223/books");
     console.log(response.data);
 
     this.setState({ books: response.data });
@@ -18,8 +19,12 @@ class BooksView extends Component {
       <>
         <h1>Books</h1>
         <ul>
-          {this.state.books.map(books => (
-            <li key={books.id}>{books.title}</li>
+          {this.state.books.map(book => (
+            <li key={book.id}>
+              <Link to={`${this.props.match.url}/${book.id}`}>
+                {book.title}
+              </Link>
+            </li>
           ))}
         </ul>
       </>
