@@ -20,4 +20,5 @@
 
 ```
 cd documents/github/react-router
+npm run server
 ```
