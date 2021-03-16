@@ -1,12 +1,15 @@
 import React from "react";
+import "./BookPreview.scss";
 
 const BookPreview = ({ imgUrl, title }) => {
+  console.log(imgUrl);
   return (
     <div>
-      <img src={imgUrl} alt={title} />
+      <div className="BookPreview-thumb">
+        {imgUrl && <img src={imgUrl} alt={title} />}
+      </div>
       <div>
         <h3>{title}</h3>
-        <a href="#">Go somewhere</a>
       </div>
     </div>
   );

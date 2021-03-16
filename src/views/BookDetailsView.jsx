@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-// import errorImg from "./error.jpg";
+import { routes } from "../routes";
 
 export default class BookDetailsView extends Component {
   static defaultProps = {
@@ -25,16 +25,29 @@ export default class BookDetailsView extends Component {
     this.setState({ ...response.data });
   }
 
+  handleGoBack = () => {
+    const { location, history } = this.props;
+    history.push(location?.state?.from || routes.books);
+  };
+
+  handleImg = () => {
+    setTimeout((imgUrl, title) => <img src={imgUrl} alt={title} />, 1000);
+  };
+
   render() {
-    const { imgUrl, title, descr } = this.state;
+    const { imgUrl, title, descr, author } = this.state;
+
     return (
-      <>
+      <div className="container-fluid">
+        <button type="button" onClick={this.handleGoBack}>
+          &#60; back
+        </button>
         <h1>Book Details View - {this.props.match.params.bookId}</h1>
-        <img src={imgUrl} alt={title} />
+        {<img src={imgUrl} alt={title} />}
         <h2>{title}</h2>
-        {this.state.author && <p>Авторы: {this.state.author.name}</p>}
+        {author && <p>Авторы: {author.name}</p>}
         <p>{descr}</p>
-      </>
+      </div>
     );
   }
 }

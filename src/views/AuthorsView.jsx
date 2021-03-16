@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { NavLink, Route } from "react-router-dom";
-import AuthorBooks from "../components/AuthorBooks";
+import BookList from "../components/BookList";
 
 class AuthorsView extends Component {
   state = {
@@ -22,9 +22,9 @@ class AuthorsView extends Component {
       <>
         <h1>Authors</h1>
         <ul>
-          {this.state.authors.map(author => (
-            <li key={author.id}>
-              <NavLink to={`${url}/${author.id}`}>{author.name}</NavLink>
+          {this.state.authors.map(({ id, name }) => (
+            <li key={id}>
+              <NavLink to={`${url}/${id}`}>{name}</NavLink>
             </li>
           ))}
         </ul>
@@ -38,7 +38,7 @@ class AuthorsView extends Component {
               console.log(author.books);
             }
 
-            return author && <AuthorBooks {...props} books={author.books} />;
+            return author && <BookList {...props} books={author.books} />;
           }}
         />
       </>

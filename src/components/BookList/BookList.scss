@@ -1,0 +1,9 @@
+.BookList {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > li {
+    width: 300px;
+    margin: 5px;
+  }
+}
